@@ -29,7 +29,7 @@ module ActiveAdmin
             end
             inputs_for_nested_attributes(
               for: [:translations, translation ],
-              class: "inputs locale locale-#{translation.locale}",
+              class: "inputs locale locale-#{translation.locale.to_s}",
               &fields
             )
           end.join.html_safe
