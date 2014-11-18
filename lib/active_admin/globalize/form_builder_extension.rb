@@ -22,7 +22,7 @@ module ActiveAdmin
             translation ||= object.translations.build(locale: locale)
             fields = proc do |form|
               form.input(:locale, as: :hidden)
-              form.input(:id, as: :hidden)
+              form.input(:id, as: :hidden) if form.object.persisted?
               I18n.with_locale(switch_locale ? locale : I18n.locale) do
                 block.call(form)
               end
